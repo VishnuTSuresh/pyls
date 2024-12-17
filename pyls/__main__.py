@@ -9,6 +9,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", action="store_true")
     parser.add_argument("-r", action="store_true")
     parser.add_argument("-t", action="store_true")
+    parser.add_argument("--filter", choices=["file", "dir"])
     args = parser.parse_args()
 
     with open("structure.json") as structure_file:
@@ -19,6 +20,7 @@ if __name__ == "__main__":
                 a=args.A,
                 l=args.l,
                 r=args.r,
-                t=args.t
+                t=args.t,
+                filter=args.filter
             )
         )
