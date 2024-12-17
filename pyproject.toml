@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pyls"
+version = "0.1.0"
+description = "A Python program, that takes a json file (which contains the information of a directory in nested structure) and prints out its content in the console in the style of ls (linux utility)."
+authors = ["Vishnu T Suresh"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
