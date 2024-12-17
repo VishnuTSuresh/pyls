@@ -32,3 +32,16 @@ def test_ls_r_function():
         mock_structure_json = json.load(structure_file)
     result = ls(mock_structure_json, r=True)
     assert result == "token parser main.go lexer go.mod ast README.md LICENSE"
+
+def test_ls_t_function():
+    with open("tests/structure.json", "r") as structure_file:
+        mock_structure_json = json.load(structure_file)
+    result = ls(mock_structure_json, l=True, t=True)
+    assert result == """drwxr-xr-x 1071 Nov 14 11:27 LICENSE
+drwxr-xr-x 83 Nov 14 11:27 README.md
+drwxr-xr-x 60 Nov 14 13:51 go.mod
+-rw-r--r-- 74 Nov 14 13:57 main.go
+-rw-r--r-- 4096 Nov 14 14:57 token
+drwxr-xr-x 4096 Nov 14 15:21 lexer
+-rw-r--r-- 4096 Nov 14 15:58 ast
+drwxr-xr-x 4096 Nov 17 12:51 parser"""

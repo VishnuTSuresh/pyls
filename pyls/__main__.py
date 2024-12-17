@@ -8,6 +8,7 @@ if __name__ == "__main__":
     parser.add_argument("-A", action="store_true")
     parser.add_argument("-l", action="store_true")
     parser.add_argument("-r", action="store_true")
+    parser.add_argument("-t", action="store_true")
     args = parser.parse_args()
 
     with open("structure.json") as structure_file:
@@ -17,6 +18,7 @@ if __name__ == "__main__":
                 structure_data,
                 a=args.A,
                 l=args.l,
-                r=args.r
+                r=args.r,
+                t=args.t
             )
         )
