@@ -1,8 +1,13 @@
 from datetime import datetime
 
 
-def ls(structure_data, a=False, l=False, r=False, t=False):
+def ls(structure_data, a=False, l=False, r=False, t=False, filter=None):
     contents = structure_data["contents"].copy()
+    if filter is not None:
+        if filter == "dir":
+            contents = [content for content in contents if "contents" in content]
+        if filter == "file":
+            contents = [content for content in contents if "contents" not in content]
     if t:
         contents = sorted(contents, key=lambda content: content["time_modified"])
     if r:
