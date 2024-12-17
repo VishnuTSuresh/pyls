@@ -26,3 +26,9 @@ drwxr-xr-x 4096 Nov 14 15:21 lexer
 -rw-r--r-- 74 Nov 14 13:57 main.go
 drwxr-xr-x 4096 Nov 17 12:51 parser
 -rw-r--r-- 4096 Nov 14 14:57 token"""
+
+def test_ls_r_function():
+    with open("tests/structure.json", "r") as structure_file:
+        mock_structure_json = json.load(structure_file)
+    result = ls(mock_structure_json, r=True)
+    assert result == "token parser main.go lexer go.mod ast README.md LICENSE"
