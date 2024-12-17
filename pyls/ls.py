@@ -1,9 +1,10 @@
 from datetime import datetime
 
 
-def ls(structure_data, a=False, l=False):
+def ls(structure_data, a=False, l=False, r=False):
     contents = structure_data["contents"].copy()
-
+    if r:
+        contents = reversed(contents)
     if not a:
         contents = [content for content in contents if not content["name"].startswith(".")]
 
