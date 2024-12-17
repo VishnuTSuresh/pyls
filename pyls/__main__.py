@@ -6,6 +6,7 @@ from pyls.ls import ls
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Python ls implementation")
     parser.add_argument("-A", action="store_true")
+    parser.add_argument("-l", action="store_true")
     args = parser.parse_args()
 
     with open("structure.json") as structure_file:
@@ -13,6 +14,7 @@ if __name__ == "__main__":
         print(
             ls(
                 structure_data,
-                a=args.A
+                a=args.A,
+                l=args.l
             )
         )
