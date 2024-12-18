@@ -61,3 +61,11 @@ def test_ls_path_function():
     assert result == "parser_test.go parser.go go.mod"
     result = ls(mock_structure_json, path="./parser/parser.go")
     assert result == "parser.go"
+
+def test_ls_h_function():
+    with open("tests/structure.json", "r") as structure_file:
+        mock_structure_json = json.load(structure_file)
+    result = ls(mock_structure_json, l=True, h=True, path="parser")
+    assert result == """drwxr-xr-x 1.3K Nov 17 12:51 parser_test.go
+-rw-r--r-- 1.6K Nov 17 12:05 parser.go
+drwxr-xr-x 533 Nov 14 16:03 go.mod"""
