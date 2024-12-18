@@ -1,18 +1,17 @@
-[tool.poetry]
+[project]
 name = "pyls"
-version = "0.1.0"
-description = "A Python program, that takes a json file (which contains the information of a directory in nested structure) and prints out its content in the console in the style of ls (linux utility)."
-authors = ["Vishnu T Suresh"]
-license = "MIT License"
+version = "1.0.0"
+description = "A Python implementation of the 'ls' command"
+authors = [{ name = "Vishnu T Suresh", email = "vishnutsuresh@live.com" }]
 readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
 
-[tool.poetry.dependencies]
-python = "^3.13"
+dependencies = []
 
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.4"
+[project.scripts]
+pyls = "pyls.__main__:main"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
