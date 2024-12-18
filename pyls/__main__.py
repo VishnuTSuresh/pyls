@@ -27,11 +27,19 @@ def main() -> None:
     if args.help:
         print(help_statement)
     else:
-        # Load the file structure from a JSON file
-        with open("structure.json") as structure_file:
-            structure_data: Dict[str, Any] = json.load(structure_file)
+        # Try to load the file structure from the JSON file
+        try:
+            with open("structure.json") as structure_file:
+                structure_data: Dict[str, Any] = json.load(structure_file)
+        except FileNotFoundError:
+            print("Error: 'structure.json' file not found. Please ensure the file exists in the current directory.")
+            return
+        except json.JSONDecodeError:
+            print("Error: Failed to parse 'structure.json'. Please ensure it contains valid JSON data.")
+            return
 
-            # Execute the `ls` function with the parsed arguments
+        # Try to execute the `ls` function and handle potential issues
+        try:
             result = ls(
                 structure_data,
                 show_all=args.A,
@@ -43,6 +51,10 @@ def main() -> None:
                 path=args.path
             )
             print(result)
+        except KeyError as e:
+            print(f"Error: Invalid structure detected. Missing key: {e}")
+        except Exception as e:
+            print(f"Unexpected error: {e}")
 
 if __name__ == "__main__":
     main()
