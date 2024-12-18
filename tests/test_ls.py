@@ -53,3 +53,11 @@ def test_ls_filter_function():
     assert result == "LICENSE README.md go.mod main.go"
     result = ls(mock_structure_json, filter="dir")
     assert result == "ast lexer parser token"
+
+def test_ls_path_function():
+    with open("tests/structure.json", "r") as structure_file:
+        mock_structure_json = json.load(structure_file)
+    result = ls(mock_structure_json, path="parser")
+    assert result == "parser_test.go parser.go go.mod"
+    result = ls(mock_structure_json, path="./parser/parser.go")
+    assert result == "parser.go"
